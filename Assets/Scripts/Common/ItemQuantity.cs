@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemQuantity
+public class ItemQuantity : Object
 {
     public Item item;
     public int amount;

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db25dec200806bd459b9635b3a2de1fe, type: 3}
+  m_Name: Blacksmith
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1675088693129850, guid: 8c6bba77413370b469adb3b6233d098e, type: 3}
+  gridSize: {x: 9, y: 9}
+  constructionTime: 25
+  constructionCost:
+  - item: {fileID: 11400000, guid: 9c165f8ef47f51871b5fbcc2e9c8c377, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: d964dddf7ad9e8716aed6b9fce2abeeb, type: 2}
+    amount: 5
+  recipe: {fileID: 11400000, guid: 16a5fdc60bcfcc773b31d0050f043cbe, type: 2}

@@ -3,14 +3,8 @@ using UnityEngine.UI;
 
 public class GUIInputHandler : MonoBehaviour
 {
-    public Button buildButton;
-
     public GameObject buildMenu;
-
-    void Start()
-    {
-        buildButton.onClick.AddListener(ToggleBuildMenu);
-    }
+    public GameObject placementGrid;
 
     void Update()
     {
@@ -19,7 +13,13 @@ public class GUIInputHandler : MonoBehaviour
         }
     }
 
-    private void ToggleBuildMenu() {
+    public void ToggleBuildMenu() {
         buildMenu.SetActive(!buildMenu.activeSelf);
+    }
+
+    public void Build(Building building) {
+        PlacementGrid script = placementGrid.GetComponent<PlacementGrid>();
+        placementGrid.SetActive(!placementGrid.activeSelf);
+        script.buildingPattern = building;
     }
 }
