@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemQuantity : Object
+public class ItemQuantity 
 {
     public Item item;
     public int amount;
+
+    public ItemQuantity() {}
 
     public ItemQuantity(Item item, int amount)
     {

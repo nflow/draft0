@@ -18,6 +18,4 @@ MonoBehaviour:
   constructionCost:
   - item: {fileID: 11400000, guid: 9c165f8ef47f51871b5fbcc2e9c8c377, type: 2}
     amount: 5
-  - item: {fileID: 11400000, guid: d964dddf7ad9e8716aed6b9fce2abeeb, type: 2}
-    amount: 0
   recipe: {fileID: 11400000, guid: 744c1d9961de52bfab311970add6f129, type: 2}

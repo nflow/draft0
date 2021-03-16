@@ -6,10 +6,7 @@ public class ProductionBuilding : Building
 {
 
     public Recipe recipe;
-
-    public ProductionBuilding() {
-        constructionCost = new List<ItemQuantity>();
-    }
+    
     public override System.Type GetComponentType() {
         return typeof(Production);
     }

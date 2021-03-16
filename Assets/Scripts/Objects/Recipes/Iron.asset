@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems: []
   producedItems:
-  - item: {fileID: 11400000, guid: 4a036e393f82b8e2b8757110203dca26, type: 2}
-    amount: 1
+  - item: {fileID: 0}
+    amount: 0

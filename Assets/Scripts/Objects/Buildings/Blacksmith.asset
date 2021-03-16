@@ -16,8 +16,8 @@ MonoBehaviour:
   gridSize: {x: 9, y: 9}
   constructionTime: 25
   constructionCost:
+  - item: {fileID: 0}
+    amount: 5
   - item: {fileID: 11400000, guid: 9c165f8ef47f51871b5fbcc2e9c8c377, type: 2}
     amount: 2
-  - item: {fileID: 11400000, guid: d964dddf7ad9e8716aed6b9fce2abeeb, type: 2}
-    amount: 5
   recipe: {fileID: 11400000, guid: 16a5fdc60bcfcc773b31d0050f043cbe, type: 2}
