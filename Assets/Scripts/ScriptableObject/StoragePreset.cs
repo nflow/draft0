@@ -5,9 +5,9 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "New ItemPreset", menuName = "ItemPreset", order = 1)]
 public class StoragePreset : ScriptableObject
 {
-    public List<ItemQuantity> itemPreset;
+    public List<ItemQuantity> items;
 
     public StoragePreset() {
-        itemPreset = new List<ItemQuantity>();
+        items = new List<ItemQuantity>();
     }
 }

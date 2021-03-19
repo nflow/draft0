@@ -46,7 +46,12 @@ public class LevelScriptEditor : PropertyDrawer
         var allItems = Resources.FindObjectsOfTypeAll<Item>().ToList();
 
         var item = property.FindPropertyRelative("item");
-        var selectedIndex = item.objectReferenceValue ? allItems.FindIndex(e => e == item.objectReferenceValue) : 0;
+        var selectedIndex = 0;
+        if (!item.objectReferenceValue) {
+            item.objectReferenceValue = allItems[selectedIndex];
+        } else {
+            selectedIndex = allItems.FindIndex(e => e == item.objectReferenceValue);
+        }
 
         EditorGUI.BeginChangeCheck();
         selectedIndex = EditorGUI.Popup(itemRect, selectedIndex, allItems.Select(e => new GUIContent(e.name, e.itemIcon)).ToArray());
