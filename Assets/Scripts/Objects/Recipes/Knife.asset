@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   requiredItems:
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 4a036e393f82b8e2b8757110203dca26, type: 2}
+    amount: 2
   producedItems:
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 17986c253792697bc8d519880dded193, type: 2}
+    amount: 1

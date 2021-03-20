@@ -8,7 +8,6 @@ public class Recipe : ScriptableObject
 {
 
     public List<ItemQuantity> requiredItems;
-    
     public List<ItemQuantity> producedItems;
 
     public Recipe() {
