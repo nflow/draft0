@@ -7,7 +7,11 @@ public class GUIInputHandler : MonoBehaviour
 
     public void Build(Building building) {
         PlacementGrid script = placementGrid.GetComponent<PlacementGrid>();
-        placementGrid.SetActive(!placementGrid.activeSelf);
-        script.buildingPattern = building;
+        if (building.Equals(script.buildingPattern)) {
+            placementGrid.SetActive(!placementGrid.activeSelf);
+        } else {
+            placementGrid.SetActive(true);
+            script.buildingPattern = building;
+        }
     }
 }
