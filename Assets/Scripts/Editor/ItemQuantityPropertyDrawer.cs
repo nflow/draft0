@@ -43,7 +43,7 @@ public class ItemQuantityPropertyDrawer : PropertyDrawer
         }
 
         EditorGUI.BeginChangeCheck();
-        selectedIndex = EditorGUI.Popup(itemRect, selectedIndex, allItems.Select(e => new GUIContent(e.name, e.itemIcon)).ToArray());
+        selectedIndex = EditorGUI.Popup(itemRect, selectedIndex, allItems.Select(e => new GUIContent(e.name, e.itemIcon.texture)).ToArray());
         if (EditorGUI.EndChangeCheck())
         {
             item.objectReferenceValue = allItems[selectedIndex];

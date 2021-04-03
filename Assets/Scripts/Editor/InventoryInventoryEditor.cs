@@ -29,7 +29,7 @@ public class InventoryEditor : Editor
                         #region Item Element
                         GUILayout.BeginHorizontal();
 
-                        GUILayout.Label(element.item.itemIcon, GUILayout.MaxWidth(16), GUILayout.MaxHeight(16));
+                        GUILayout.Label(element.item.itemIcon.texture, GUILayout.MaxWidth(16), GUILayout.MaxHeight(16));
                         GUILayout.Label(element.item.name + ": ");
 
                         GUILayout.BeginVertical();
