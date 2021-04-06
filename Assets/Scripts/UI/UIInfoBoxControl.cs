@@ -16,6 +16,6 @@ public class InfoBoxControl : MonoBehaviour
         var rect = GetComponent<RectTransform>().rect;
         var position = args.entity.transform.position;
 
-        return new Vector3(rect.width / 2 + position.x, rect.height / 2 + position.y, position.z);
+        transform. new Vector3(rect.width / 2 + position.x, rect.height / 2 + position.y, position.z);
     }
 }
