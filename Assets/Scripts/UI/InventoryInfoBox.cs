@@ -15,7 +15,7 @@ public class InventoryInfoBox : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-        var selectionHandler = gameObject.GetComponentInParent<SelectionHandler>();
+        var selectionHandler = gameObject.GetComponentInParent<UISelectionSystem>();
         var ii = selectionHandler.selectedObject.GetComponentInParent<IInteractableInventory>();
         if (ii != null)
         {
