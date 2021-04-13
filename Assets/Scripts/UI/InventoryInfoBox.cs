@@ -8,15 +8,21 @@ public class InventoryInfoBox : MonoBehaviour
 {
     public Transform listElementPrefab;
     public Transform listContainer;
+    public Transform selectionSystem;
 
-    private void OnEnable()
+    private void Start()
+    {
+        selectionSystem.GetComponent<SelectionSystem>().OnHoverEntityEnter += handleHoverChange;
+    }
+
+    private void handleHoverChange(object sender, EntityEventArgs args)
     {
         foreach (Transform child in listContainer)
         {
             GameObject.Destroy(child.gameObject);
         }
-        var selectionHandler = gameObject.GetComponentInParent<UISelectionSystem>();
-        var ii = selectionHandler.selectedObject.GetComponentInParent<IInteractableInventory>();
+        
+        var ii = args.entity.GetComponent<IInteractableInventory>();
         if (ii != null)
         {
             foreach (var element in ii.inventory.GetList())

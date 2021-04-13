@@ -21,7 +21,8 @@ public class PlacementGrid : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().size = new Vector3(buildingPattern.gridSize.x, 1, buildingPattern.gridSize.y);
         placementModel = Instantiate(buildingPattern.prefab, transform.position, transform.rotation, transform);
         var children = placementModel.GetComponentsInChildren<Renderer>();
-        foreach (var child in children) {
+        foreach (var child in children)
+        {
             foreach (var mat in child.materials)
             {
                 child.material = buildMaterial;
@@ -78,7 +79,7 @@ public class PlacementGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) 
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
@@ -96,9 +97,9 @@ public class PlacementGrid : MonoBehaviour
             if (buildPossible && Input.GetMouseButtonDown(0))
             {
                 var newBuilding = Instantiate(buildingTemplate, pos, transform.rotation);
-                
+
                 var collider = newBuilding.GetComponent<BoxCollider>();
-                collider.size = new Vector3(buildingPattern.gridSize.x, 1, buildingPattern.gridSize.y);
+                collider.size = new Vector3(buildingPattern.gridSize.x, buildingPattern.calculatedHeight, buildingPattern.gridSize.y);
 
                 var construction = newBuilding.AddComponent<Construction>();
                 construction.toConstruct = buildingPattern;
@@ -107,16 +108,17 @@ public class PlacementGrid : MonoBehaviour
             }
             else if (Input.mouseScrollDelta.y > 0)
             {
-                transform.Rotate(0, -90.0f,0);
+                transform.Rotate(0, -90.0f, 0);
             }
             else if (Input.mouseScrollDelta.y < 0)
             {
-                transform.Rotate(0, 90.0f,0);
+                transform.Rotate(0, 90.0f, 0);
             }
         }
     }
 
-    private void OnTriggerStay(Collider other) {
+    private void OnTriggerStay(Collider other)
+    {
         Debug.Log(other.tag);
         if (other.tag == "Obstacle")
         {
@@ -125,7 +127,8 @@ public class PlacementGrid : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other)
+    {
         if (other.tag == "Obstacle")
         {
             buildMaterial.SetColor("_Color", Color.green);
