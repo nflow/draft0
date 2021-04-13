@@ -4,10 +4,11 @@ using System.Collections.Generic;
 [System.Serializable]
 public abstract class Building : ScriptableObject
 {
+    [ReadOnly]
+    public float calculatedHeight;
 
-    public float calculatedHeight { get; private set; }
-    private GameObject _prefab;
-
+    [SerializeProperty("prefab")]
+    public GameObject _prefab;
     public GameObject prefab
     {
         get => _prefab;
