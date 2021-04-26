@@ -6,20 +6,26 @@ using System.Collections.Generic;
 public class PlacementGrid : MonoBehaviour
 {
     public int gridSize = 20;
-    public Building buildingPattern;
+
+    private GameObject placementModel;
+    public Building buildingPattern {
+        set {
+            Destroy(placementModel);
+            gameObject.GetComponent<BoxCollider>().size = new Vector3(buildingPattern.gridSize.x, 1, buildingPattern.gridSize.y);
+            placementModel = Instantiate(buildingPattern.prefab, transform.position, transform.rotation, transform);
+        }
+    }
+    
     public GameObject buildingTemplate;
     public Material buildMaterial;
 
     private Mesh gridMesh;
-    private GameObject placementModel;
     private bool buildPossible;
     private MeshRenderer meshRenderer;
 
     private void OnEnable()
     {
         buildPossible = true;
-        gameObject.GetComponent<BoxCollider>().size = new Vector3(buildingPattern.gridSize.x, 1, buildingPattern.gridSize.y);
-        placementModel = Instantiate(buildingPattern.prefab, transform.position, transform.rotation, transform);
         var children = placementModel.GetComponentsInChildren<Renderer>();
         foreach (var child in children)
         {
