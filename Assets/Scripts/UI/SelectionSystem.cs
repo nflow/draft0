@@ -20,10 +20,9 @@ public class SelectionSystem : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Default")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << Layer.SELECTABLE_GAME_OBJECT))
         {
-            if (hit.collider &&
-                hit.collider.tag != Tag.IGNORE_UI_HIT)
+            if (hit.collider)
             {
                 var eventArgs = new EntityEventArgs(hit.collider.gameObject);
                 if (Input.GetMouseButtonDown(0)) {

@@ -26,6 +26,11 @@ public class PlacementGrid : MonoBehaviour
     private Mesh gridMesh;
     private bool buildPossible;
     private MeshRenderer meshRenderer;
+    
+    private void OnEnable()
+    {
+        buildPossible = true;
+    }
 
     private void OnDisable()
     {
@@ -78,7 +83,7 @@ public class PlacementGrid : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("World")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << Layer.WORLD))
         {
             var xPos = Mathf.Round(hit.point.x);
             var zPos = Mathf.Round(hit.point.z);
@@ -103,7 +108,6 @@ public class PlacementGrid : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == Tag.OBSTACLE)
         {
             buildMaterial.SetColor("_Color", Color.red);
@@ -124,6 +128,8 @@ public class PlacementGrid : MonoBehaviour
     {
         var newBuilding = Instantiate(building.prefab, transform.position, transform.rotation);
         newBuilding.AddComponent<BoxCollider>().size = new Vector3(building.gridSize.x, building.calculatedHeight, building.gridSize.y);
+        newBuilding.layer = Layer.SELECTABLE_GAME_OBJECT;
+        newBuilding.tag = Tag.OBSTACLE;
 
         var construction = newBuilding.AddComponent<Construction>();
         construction.toConstruct = building;
