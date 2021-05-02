@@ -17,7 +17,7 @@ public class Storage : MonoBehaviour, IInteractableInventory
     private void Awake()
     {
         _inventory = new DefaultInventory();
-        var gameLogic = GameObject.FindGameObjectWithTag("GameLogic");
+        var gameLogic = GameObject.FindGameObjectWithTag(Tag.GAME_LOGIC);
         storageManager = gameLogic.GetComponent<StorageManager>();
 
         if (storagePreset != null) {

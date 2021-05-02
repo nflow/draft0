@@ -23,7 +23,7 @@ public class Production : MonoBehaviour, IInteractableInventory
 
     private void Awake()
     {
-        var gameLogic = GameObject.FindGameObjectWithTag("GameLogic");
+        var gameLogic = GameObject.FindGameObjectWithTag(Tag.GAME_LOGIC);
         workerManager = gameLogic.GetComponent<WorkerManager>();
         storageManager = gameLogic.GetComponent<StorageManager>();
         requestSystem = gameLogic.GetComponent<RequestSystem>();

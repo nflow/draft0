@@ -16,7 +16,7 @@ public class Carrier : Character, IInteractableInventory
 
     private void Awake() {
         
-        carrierManager = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<CarrierManager>();
+        carrierManager = GameObject.FindGameObjectWithTag(Tag.GAME_LOGIC).GetComponent<CarrierManager>();
         movement = GetComponent<Movement>();
         
         _inventory = new DefaultInventory();

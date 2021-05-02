@@ -21,7 +21,7 @@ public class Construction : MonoBehaviour, IInteractableInventory
 
     private void Start()
     {
-        requestSystem = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<RequestSystem>();
+        requestSystem = GameObject.FindGameObjectWithTag(Tag.GAME_LOGIC).GetComponent<RequestSystem>();
         
         var itemFilter = toConstruct.constructionCost.Select(x => x.item).ToList();
         _inventory = new FilteredInventory(itemFilter, Enumerable.Empty<Item>().ToList());

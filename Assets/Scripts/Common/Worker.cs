@@ -36,7 +36,7 @@ public class Worker : Character
     private void Awake()
     {
         _movement = GetComponent<Movement>();
-        _workerManager = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<WorkerManager>();
+        _workerManager = GameObject.FindGameObjectWithTag(Tag.GAME_LOGIC).GetComponent<WorkerManager>();
     }
 
     private void OnEnable() {

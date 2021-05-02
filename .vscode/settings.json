@@ -56,5 +56,9 @@
 
     "files.associations": {
         "*.shader": "hlsl"
-      }
+    },
+    "cSpell.ignoreWords": [
+        "prefab",
+        "rect"
+    ]
 }

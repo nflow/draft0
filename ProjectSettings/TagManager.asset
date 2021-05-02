@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameLogic
   - Obstacle
+  - IGNORE_UI_HIT
   layers:
   - Default
   - TransparentFX

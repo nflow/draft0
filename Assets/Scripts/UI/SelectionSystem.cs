@@ -22,7 +22,8 @@ public class SelectionSystem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Default")))
         {
-            if (hit.collider)
+            if (hit.collider &&
+                hit.collider.tag != Tag.IGNORE_UI_HIT)
             {
                 var eventArgs = new EntityEventArgs(hit.collider.gameObject);
                 if (Input.GetMouseButtonDown(0)) {

@@ -8,33 +8,24 @@ public class PlacementGrid : MonoBehaviour
     public int gridSize = 20;
 
     private GameObject placementModel;
-    public Building buildingPattern {
-        set {
-            Destroy(placementModel);
-            gameObject.GetComponent<BoxCollider>().size = new Vector3(buildingPattern.gridSize.x, 1, buildingPattern.gridSize.y);
-            placementModel = Instantiate(buildingPattern.prefab, transform.position, transform.rotation, transform);
+    private Building _buildingPattern;
+    public Building buildingPattern
+    {
+        set
+        {
+            _buildingPattern = value;
+            UpdatePlacementModel(value);
+        }
+        get {
+            return _buildingPattern;
         }
     }
-    
-    public GameObject buildingTemplate;
+
     public Material buildMaterial;
 
     private Mesh gridMesh;
     private bool buildPossible;
     private MeshRenderer meshRenderer;
-
-    private void OnEnable()
-    {
-        buildPossible = true;
-        var children = placementModel.GetComponentsInChildren<Renderer>();
-        foreach (var child in children)
-        {
-            foreach (var mat in child.materials)
-            {
-                child.material = buildMaterial;
-            }
-        }
-    }
 
     private void OnDisable()
     {
@@ -43,11 +34,6 @@ public class PlacementGrid : MonoBehaviour
 
     void Start()
     {
-        meshRenderer = gameObject.GetComponent<MeshRenderer>();
-        meshRenderer.material.SetInt("_GridSize", gridSize);
-        meshRenderer.material.SetFloat("_BuildingSizeX", buildingPattern.gridSize.x);
-        meshRenderer.material.SetFloat("_BuildingSizeZ", buildingPattern.gridSize.y);
-
         MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
         gridMesh = new Mesh();
         meshFilter.mesh = gridMesh;
@@ -102,15 +88,7 @@ public class PlacementGrid : MonoBehaviour
 
             if (buildPossible && Input.GetMouseButtonDown(0))
             {
-                var newBuilding = Instantiate(buildingTemplate, pos, transform.rotation);
-
-                var collider = newBuilding.GetComponent<BoxCollider>();
-                collider.size = new Vector3(buildingPattern.gridSize.x, buildingPattern.calculatedHeight, buildingPattern.gridSize.y);
-
-                var construction = newBuilding.AddComponent<Construction>();
-                construction.toConstruct = buildingPattern;
-
-                Instantiate(buildingPattern.prefab, pos, transform.rotation, newBuilding.transform);
+                CreateNewBuilding(_buildingPattern);
             }
             else if (Input.mouseScrollDelta.y > 0)
             {
@@ -126,7 +104,7 @@ public class PlacementGrid : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Debug.Log(other.tag);
-        if (other.tag == "Obstacle")
+        if (other.tag == Tag.OBSTACLE)
         {
             buildMaterial.SetColor("_Color", Color.red);
             buildPossible = false;
@@ -135,10 +113,41 @@ public class PlacementGrid : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Obstacle")
+        if (other.tag == Tag.OBSTACLE)
         {
             buildMaterial.SetColor("_Color", Color.green);
             buildPossible = true;
         }
+    }
+
+    private void CreateNewBuilding(Building building)
+    {
+        var newBuilding = Instantiate(building.prefab, transform.position, transform.rotation);
+        newBuilding.AddComponent<BoxCollider>().size = new Vector3(building.gridSize.x, building.calculatedHeight, building.gridSize.y);
+
+        var construction = newBuilding.AddComponent<Construction>();
+        construction.toConstruct = building;
+    }
+
+    private void UpdatePlacementModel(Building building)
+    {
+        Destroy(placementModel);
+        placementModel = Instantiate(building.prefab, transform.position, transform.rotation, transform);
+
+        gameObject.GetComponent<BoxCollider>().size = new Vector3(building.gridSize.x, building.calculatedHeight, building.gridSize.y);
+
+        var children = placementModel.GetComponentsInChildren<Renderer>();
+        foreach (var child in children)
+        {
+            foreach (var mat in child.materials)
+            {
+                child.material = buildMaterial;
+            }
+        }
+
+        meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        meshRenderer.material.SetInt("_GridSize", gridSize);
+        meshRenderer.material.SetFloat("_BuildingSizeX", _buildingPattern.gridSize.x);
+        meshRenderer.material.SetFloat("_BuildingSizeZ", _buildingPattern.gridSize.y);
     }
 }
