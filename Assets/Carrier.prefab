@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3836989693737162110}
   - component: {fileID: 3836989693737162111}
   - component: {fileID: 3836989693737162104}
-  - component: {fileID: 3836989693737162105}
   - component: {fileID: 3836989693737162083}
   m_Layer: 0
   m_Name: Carrier
@@ -112,11 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3836989693737162107}
-  age: 0
+  minReproducitonRate: 15
+  maxReproducitonRate: 20
+  minAge: 15
   maxAge: 0
-  reproducitonRate: 0
-  nextChild: 0
-  speed: 0.1
 --- !u!114 &3836989693737162104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,20 +130,6 @@ MonoBehaviour:
   _moving: 0
   _destination: {x: 0, y: 0, z: 0}
   speed: 5
---- !u!114 &3836989693737162105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836989693737162107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9843710f1cc3768c9b36001554af4ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _carrierRating: 1
-  _workerRating: 1
 --- !u!114 &3836989693737162083
 MonoBehaviour:
   m_ObjectHideFlags: 0

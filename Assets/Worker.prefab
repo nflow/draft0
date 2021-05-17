@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6145453845256022526}
   - component: {fileID: 6145453845256022525}
   - component: {fileID: 6145453845256022524}
-  - component: {fileID: 6145453845256022523}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -111,11 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6145453845256022521}
-  age: 0
+  minReproducitonRate: 15
+  maxReproducitonRate: 20
+  minAge: 15
   maxAge: 0
-  reproducitonRate: 0
-  nextChild: 0
-  speed: 0.1
 --- !u!114 &6145453845256022524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,17 +129,3 @@ MonoBehaviour:
   _moving: 0
   _destination: {x: 0, y: 0, z: 0}
   speed: 5
---- !u!114 &6145453845256022523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6145453845256022521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1778078c54eda5214b2dd7dc4393972d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _carrierRating: 1
-  _workerRating: 1

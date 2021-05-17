@@ -6,9 +6,13 @@ public class Character : MonoBehaviour
 {
     public const int SKILL_CAP = 100;
 
+    public float age;
+    public float maxAge;
+    public float nextChild;
+
     [SerializeField]
-    private int _carrierRating = 1;
-    public int carrierRating
+    private float _carrierRating;
+    public float carrierRating
     {
         get => _carrierRating;
         set
@@ -25,8 +29,8 @@ public class Character : MonoBehaviour
     }
 
     [SerializeField]
-    private int _workerRating = 1;
-    public int workerRating
+    private float _workerRating;
+    public float workerRating
     {
         get => _workerRating;
         set
