@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 [System.Serializable]
 public abstract class Building : ScriptableObject
@@ -7,6 +6,7 @@ public abstract class Building : ScriptableObject
     [ReadOnly]
     public float calculatedHeight;
 
+    // TODO: Move to custom editor since this will not be serialized properly to file
     [SerializeProperty("prefab")]
     public GameObject _prefab;
     public GameObject prefab

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d0029ab66eb24588336c55958745c4, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1000011713842796, guid: ffd3e66d4df2a554fb995d41f7ffe4c2, type: 3}
+  calculatedHeight: 1.0722003
+  _prefab: {fileID: 0}
   gridSize: {x: 2, y: 2}
   constructionTime: 10
   constructionCost:
